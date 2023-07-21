@@ -46,7 +46,6 @@ public class Radio {
         } else {
             currentVolume--;
         }
-
     }
 
     public void nextStation() {                                    // метод для next
@@ -55,7 +54,6 @@ public class Radio {
         } else {
             currentStation = 0;
         }
-        ;
     }
 
     public void prevStation() {                                    // метод для prev
