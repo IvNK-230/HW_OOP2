@@ -1,8 +1,20 @@
 package ru.netology.radio;
 
 public class Radio {
-    public int currentVolume;                // создаем переменную для уровня громкости
-    public int currentStation;         // создаем переменную для частоты рабиосигнала
+    private int currentVolume;
+    private int maxVolume = 100;
+    private int minVolume = 0;
+    private int currentStation;
+    private int quantity = 10;
+    private int maxNumberStation = quantity - 1;
+    private int minNumberStation = 0;
+
+    public Radio(int quantity) {
+        this.maxNumberStation = quantity - 1;
+    }
+
+    public Radio() {
+    }
 
     public int getCurrentVolume() {
         return currentVolume;
@@ -13,54 +25,54 @@ public class Radio {
     }
 
     public void setCurrentVolume(int newCurrentVolume) {
-        if (newCurrentVolume < 0) {
+        if (newCurrentVolume < minVolume) {
             return;
         }
-        if (newCurrentVolume > 100) {
+        if (newCurrentVolume > maxVolume) {
             return;
         }
         currentVolume = newCurrentVolume;
     }
 
     public void setCurrentStation(int newCurrentStation) {
-        if (newCurrentStation < 0) {
+        if (newCurrentStation < minNumberStation) {
             return;
         }
-        if (newCurrentStation > 9) {
+        if (newCurrentStation > maxNumberStation) {
             return;
         }
         currentStation = newCurrentStation;
     }
 
-    public void addVolume() {                            // метод для увеличения громкости
-        if (currentVolume >= 100) {
-            currentVolume = 100;
-        } else {
-            currentVolume++;
+    public void addVolume() {                                    // метод для увеличения громкости
+        if (currentVolume >= maxVolume) {
+            currentVolume = maxVolume;
+            return;
         }
+        currentVolume++;
     }
 
-    public void downVolume() {                            // метод для уменьшения громкости
-        if (currentVolume <= 0) {
-            currentVolume = 0;
-        } else {
-            currentVolume--;
+    public void downVolume() {                                   // метод для уменьшения громкости
+        if (currentVolume <= minVolume) {
+            currentVolume = minVolume;
+            return;
         }
+        currentVolume--;
     }
 
-    public void nextStation() {                                    // метод для next
-        if (currentStation < 9) {
+    public void nextStation() {                                    // метод для следующей станции
+        if (currentStation < maxNumberStation) {
             currentStation++;
         } else {
-            currentStation = 0;
+            currentStation = minNumberStation;
         }
     }
 
-    public void prevStation() {                                    // метод для prev
-        if (currentStation > 0) {
+    public void prevStation() {                                    // метод для предыдущей станции
+        if (currentStation > minNumberStation) {
             currentStation--;
         } else {
-            currentStation = 9;
+            currentStation = maxNumberStation;
         }
     }
 }
