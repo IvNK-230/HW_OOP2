@@ -1,8 +1,8 @@
 package ru.netology.radio;
 
 public class Radio {
-    public int currentVolume;                // создаем переменную для уровня громкости
-    public int currentStation;         // создаем переменную для частоты рабиосигнала
+    private int currentVolume;                // создаем переменную для уровня громкости
+    private int currentStation;               // создаем переменную для частоты рабиосигнала
 
     public int getCurrentVolume() {
         return currentVolume;
